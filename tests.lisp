@@ -15,17 +15,14 @@
 ;; read-words-from-file should read in the words as list from txt file
 (define-test test-read-words-from-file
   ;; create a temporary test file
-  (with-open-file (stream "test_words.txt" 
-                         :direction :output 
+  (with-open-file (stream "test_words.txt"
+                         :direction :output
                          :if-exists :supersede)
     (format stream "hello world~%test TEST~%hello"))
-  
+
   (let ((words (read-words-from-file "test_words.txt")))
     (assert-equal 5 (length words))
     (assert-equal '("hello" "world" "test" "TEST" "hello") words))
-  
+
   ;; Delete the temporary file
   (delete-file "test_words.txt"))
-
-;; Run all tests
-(run-tests :all)

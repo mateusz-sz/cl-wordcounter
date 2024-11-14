@@ -1,3 +1,6 @@
+;; Load dependency
+(eval-when (:compile-toplevel :load-toplevel :execute)
+  (ql:quickload "cl-strings" :silent t))
 (defpackage :word-counter
   (:use :cl :cl-strings)
   (:export :read-words-from-file :distinct-word-count))
